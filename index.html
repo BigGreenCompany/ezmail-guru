@@ -89,14 +89,12 @@
     }
     .nav{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 0}
     .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.2px; white-space:nowrap}
-    .logo{
-      width:32px; height:32px; border-radius:9px;
-      background:
-        radial-gradient(12px 12px at 60% 40%, var(--accent), transparent 60%),
-        conic-gradient(from 210deg, var(--primary), var(--primary-2), var(--primary));
-      box-shadow:var(--shadow); position:relative; flex:0 0 32px;
-    }
-    .logo:after{content:""; position:absolute; right:6px; bottom:6px; width:6px; height:6px; border-radius:50%; background:#fff; opacity:.9}
+    .logo-emoji {
+  font-size: 1.6rem; /* tweak for alignment */
+  line-height: 1;
+  display: inline-block;
+  background: transparent;
+}
     .nav-cta{display:flex; gap:.6rem; align-items:center}
     @media (max-width: 720px){
       .nav{flex-wrap:wrap}
@@ -191,12 +189,12 @@
   <header>
     <div class="wrap nav">
       <a href="#" class="brand" aria-label="ezmail.guru">
-        <span class="logo" aria-hidden="true"></span>
+        <span class="logo-emoji">𑁍</span>
         <span>ezmail.guru</span>
       </a>
       <nav class="nav-cta" aria-label="Primary">
         <a href="#features" class="btn secondary">How it works</a>
-        <a href="#waitlist" class="btn" role="button" aria-label="Join the waitlist">Join the waitlist</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?usp=sharing&ouid=105363640128111441783" class="btn" role="button" aria-label="Get Started" target="_blank" rel="noopener">Get Started</a>
       </nav>
     </div>
   </header>
@@ -215,7 +213,7 @@
             <span class="chip" role="listitem">📬 Multi-account</span>
           </div>
           <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-            <a href="#waitlist" class="btn">Get early access</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?usp=sharing&ouid=105363640128111441783" class="btn" role="button" aria-label="Get Started" target="_blank" rel="noopener">Get Started</a>
             <a href="#problems" class="btn secondary">See the problem</a>
           </div>
         </div>
@@ -227,7 +225,7 @@
               <div class="step-num">1</div>
               <div>
                 <strong>Prioritize calmly</strong>
-                <div class="muted">AI ranks today’s inbox: deadlines, customers, approvals—no more guesswork.</div>
+                <div class="muted">AI ranks today's inbox: deadlines, customers, approvals—no more guesswork.</div>
               </div>
             </div>
             <div class="how-step">
@@ -338,7 +336,7 @@
         <div class="card form-card">
           <div style="padding:18px 18px 0">
             <h2 id="waitlist-title" class="section-title">Get early access</h2>
-            <p class="muted">Join the waitlist and tell us what hurts most. We’ll prioritize folks drowning in multi-account chaos.</p>
+            <p class="muted">Join the waitlist and tell us what hurts most. We'll prioritize folks drowning in multi-account chaos.</p>
             <ul class="list" style="margin-top:10px">
               <li><span class="dot"></span><span>No spam—ever. Unsubscribe anytime.</span></li>
               <li><span class="dot"></span><span>Mac + iOS friendly; Windows support coming.</span></li>
@@ -347,20 +345,15 @@
             <div style="margin:14px 0 8px"><a href="#features" class="btn secondary" style="width:100%">See features</a></div>
 
             <!-- Mobile fallback button (hidden on wider screens) -->
-            <a class="btn form-mobile-link" href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform"
-              target="_blank" rel="noopener">
-              Open the waitlist form
+            <a
+              class="btn"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?usp=sharing&ouid=105363640128111441783"
+              target="_blank"
+              rel="noopener"
+              style="width:100%; margin: 8px 0 8px"
+            >
+              Get Started
             </a>
-          </div>
-
-          <!-- Responsive iframe (no fixed height, just min-heights via CSS) -->
-          <div class="form-embed">
-            <iframe
-              title="ezmail.guru waitlist"
-              src="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?embedded=true"
-              loading="lazy"
-              allow="clipboard-write">
-            </iframe>
           </div>
         </div>
       </div>
@@ -376,7 +369,7 @@
           <p class="muted">Email, without the anxiety.</p>
         </div>
         <div>
-          <p class="muted">Privacy-first: we process only what’s needed to triage. Drafts never send without your say-so.</p>
+          <p class="muted">Privacy-first: we process only what's needed to triage. Drafts never send without your say-so.</p>
         </div>
       </div>
       <p style="margin-top:14px" class="muted">© <span id="y"></span> ezmail.guru</p>
