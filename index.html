@@ -1,26 +1,29 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>ezmail.guru — Your inbox, enlightened</title>
-  <meta name="description" content="AI that brings peace of mind to your inbox. Prioritize, summarize, and draft replies—proactively.">
+  <meta name="description"
+    content="AI that brings peace of mind to your inbox. Prioritize, summarize, and draft replies—proactively.">
   <meta property="og:title" content="ezmail.guru — Your inbox, enlightened" />
-  <meta property="og:description" content="AI that filters noise, flags what matters, and drafts replies in your tone." />
+  <meta property="og:description"
+    content="AI that filters noise, flags what matters, and drafts replies in your tone." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0ea5a4" />
   <meta name="color-scheme" content="light dark" />
   <style>
-    :root{
-      --bg:#0b1012;
-      --panel:#0f1518;
-      --text:#e7f0f4;
-      --muted:#9ab0ba;
-      --primary:#48b4a6;
-      --primary-2:#6aa8ff;
-      --accent:#ffd166;
-      --ok:#55d27a;
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    :root {
+      --bg: #0b1012;
+      --panel: #0f1518;
+      --text: #e7f0f4;
+      --muted: #9ab0ba;
+      --primary: #48b4a6;
+      --primary-2: #6aa8ff;
+      --accent: #ffd166;
+      --ok: #55d27a;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .25);
       --radius: 14px;
       --maxw: 1100px;
 
@@ -32,159 +35,400 @@
       --space: clamp(16px, 4vw, 24px);
       --gutter: clamp(14px, 3.6vw, 18px);
     }
+
     @media (prefers-color-scheme: light) {
-      :root{
-        --bg:#f6fbfd;
-        --panel:#ffffff;
-        --text:#102228;
-        --muted:#5c6f77;
-        --primary:#0ea5a4;
-        --primary-2:#2563eb;
-        --accent:#f59e0b;
-        --ok:#16a34a;
-        --shadow: 0 8px 24px rgba(16,34,40,.08);
+      :root {
+        --bg: #f6fbfd;
+        --panel: #ffffff;
+        --text: #102228;
+        --muted: #5c6f77;
+        --primary: #0ea5a4;
+        --primary-2: #2563eb;
+        --accent: #f59e0b;
+        --ok: #16a34a;
+        --shadow: 0 8px 24px rgba(16, 34, 40, .08);
       }
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       font-size: var(--fs-body);
-      color:var(--text);
+      color: var(--text);
       background:
         radial-gradient(1200px 800px at 10% -10%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 60%),
         radial-gradient(1000px 700px at 110% -10%, color-mix(in oklab, var(--primary-2) 22%, transparent), transparent 60%),
         var(--bg);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 var(--space)}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
-      width:auto; min-height:48px; padding:.85rem 1.1rem;
-      background:linear-gradient(135deg, var(--primary), var(--primary-2));
-      color:white; border:none; border-radius:12px;
-      font-weight:600; box-shadow:var(--shadow); cursor:pointer;
-      transition:transform .08s ease, filter .2s ease;
-    }
-    .btn:hover{transform:translateY(-1px); filter:brightness(1.05)}
-    .btn.secondary{
-      background:transparent; border:1px solid color-mix(in oklab, var(--text) 20%, transparent);
-      color:var(--text);
-    }
-    .btn:focus-visible{outline:3px solid color-mix(in oklab, var(--primary-2) 60%, transparent); outline-offset:2px; border-radius:14px}
 
-    @media (max-width: 640px){
-      .btn, .nav-cta .btn{width:100%}
-      .nav-cta{width:100%}
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 var(--space)
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      width: auto;
+      min-height: 48px;
+      padding: .85rem 1.1rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform .08s ease, filter .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05)
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid color-mix(in oklab, var(--text) 20%, transparent);
+      color: var(--text);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid color-mix(in oklab, var(--primary-2) 60%, transparent);
+      outline-offset: 2px;
+      border-radius: 14px
+    }
+
+    @media (max-width: 640px) {
+
+      .btn,
+      .nav-cta .btn {
+        width: 100%
+      }
+
+      .nav-cta {
+        width: 100%
+      }
     }
 
     /* Header */
-    header{
-      position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(1.2) blur(8px);
       background: color-mix(in oklab, var(--bg) 84%, transparent);
     }
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 0}
-    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.2px; white-space:nowrap}
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 0
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-weight: 800;
+      letter-spacing: .2px;
+      white-space: nowrap
+    }
+
     .logo-emoji {
-  font-size: 1.6rem; /* tweak for alignment */
-  line-height: 1;
-  display: inline-block;
-  background: transparent;
-}
-    .nav-cta{display:flex; gap:.6rem; align-items:center}
-    @media (max-width: 720px){
-      .nav{flex-wrap:wrap}
-      .nav-cta{width:100%}
+      font-size: 1.6rem;
+      /* tweak for alignment */
+      line-height: 1;
+      display: inline-block;
+      background: transparent;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: .6rem;
+      align-items: center
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-wrap: wrap
+      }
+
+      .nav-cta {
+        width: 100%
+      }
     }
 
     /* Hero */
-    .hero{padding: calc(var(--space) * 2) 0 var(--space)}
-    .hero-grid{
-      display:grid; grid-template-columns:1fr; gap: var(--gutter);
+    .hero {
+      padding: calc(var(--space) * 2) 0 var(--space)
     }
-    @media (min-width: 900px){
-      .hero-grid{grid-template-columns:1.1fr .9fr}
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--gutter);
     }
-    .h1{font-size:var(--fs-hero); line-height:1.12; font-weight:900; letter-spacing:-0.02em; margin:0}
-    .lead{font-size:var(--fs-lead); color:var(--muted); margin:.7rem 0 0}
-    .hero-card{
-      background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 92%, transparent), var(--panel));
-      border:1px solid color-mix(in oklab, var(--text) 12%, transparent);
-      border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.1fr .9fr
+      }
     }
-    .statrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
-    .chip{display:inline-flex; align-items:center; gap:.5rem; border:1px solid color-mix(in oklab, var(--text) 14%, transparent); padding:.4rem .6rem; border-radius:999px; font-size:.9rem; color:var(--muted)}
+
+    .h1 {
+      font-size: var(--fs-hero);
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0
+    }
+
+    .lead {
+      font-size: var(--fs-lead);
+      color: var(--muted);
+      margin: .7rem 0 0
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 92%, transparent), var(--panel));
+      border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow)
+    }
+
+    .statrow {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+      padding: .4rem .6rem;
+      border-radius: 999px;
+      font-size: .9rem;
+      color: var(--muted)
+    }
 
     /* Sections */
-    section{padding: calc(var(--space) * 2) 0}
-    .section-title{font-size:var(--fs-h2); font-weight:800; margin:0 0 12px}
-    .kicker{color:var(--primary); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.78rem}
-
-    .grid-3{display:grid; grid-template-columns:1fr; gap: var(--gutter)}
-    .grid-2{display:grid; grid-template-columns:1fr; gap: var(--gutter)}
-    @media (min-width: 880px){
-      .grid-3{grid-template-columns:repeat(3,1fr)}
-      .grid-2{grid-template-columns:repeat(2,1fr)}
+    section {
+      padding: calc(var(--space) * 2) 0
     }
-    .card{background:var(--panel); border:1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); height:100%}
-    .card h3{margin:0 0 .35rem; font-size:1.05rem}
-    .muted{color:var(--muted)}
 
-    .how-step{display:flex; gap:12px; align-items:flex-start}
-    .step-num{flex:0 0 34px; height:34px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, var(--primary), var(--primary-2)); color:white; font-weight:800}
+    .section-title {
+      font-size: var(--fs-h2);
+      font-weight: 800;
+      margin: 0 0 12px
+    }
 
-    .list{display:grid; gap:10px; margin:0; padding:0; list-style:none}
-    .list li{display:flex; gap:10px; align-items:flex-start}
-    .dot{width:10px; height:10px; border-radius:50%; margin-top:.45rem; background:var(--primary)}
+    .kicker {
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .78rem
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--gutter)
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--gutter)
+    }
+
+    @media (min-width: 880px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      height: 100%
+    }
+
+    .card h3 {
+      margin: 0 0 .35rem;
+      font-size: 1.05rem
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .how-step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start
+    }
+
+    .step-num {
+      flex: 0 0 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      font-weight: 800
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none
+    }
+
+    .list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: .45rem;
+      background: var(--primary)
+    }
 
     /* CTA + Form (responsive embed) */
     /* --- put with your other styles --- */
-    .form-card{padding:0; overflow:hidden}
-    .form-embed{position:relative; width:100%; background:#fff; border:0}
+    .form-card {
+      padding: 0;
+      overflow: hidden
+    }
+
+    .form-embed {
+      position: relative;
+      width: 100%;
+      background: #fff;
+      border: 0
+    }
 
     /* Let the iframe size itself via min-height (no height:100%) */
-    .form-embed iframe{
-      display:block;
-      width:100%;
-      min-height: 1600px; /* base for small screens */
-      border:0;
+    .form-embed iframe {
+      display: block;
+      width: 100%;
+      min-height: 1600px;
+      /* base for small screens */
+      border: 0;
     }
 
     /* Scale up on larger screens */
-    @media (min-width: 480px){
-      .form-embed iframe{ min-height: 1900px; }
+    @media (min-width: 480px) {
+      .form-embed iframe {
+        min-height: 1900px;
+      }
     }
-    @media (min-width: 720px){
-      .form-embed iframe{ min-height: 2200px; }
+
+    @media (min-width: 720px) {
+      .form-embed iframe {
+        min-height: 2200px;
+      }
     }
-    @media (min-width: 1024px){
-      .form-embed iframe{ min-height: 2400px; }
+
+    @media (min-width: 1024px) {
+      .form-embed iframe {
+        min-height: 2400px;
+      }
     }
 
     /* Optional: on very small screens, hide iframe and show a button instead */
-    .form-mobile-link{ display:none; }
-    @media (max-width: 380px){
-      .form-embed{ display:none; }
-      .form-mobile-link{ display:block; }
+    .form-mobile-link {
+      display: none;
+    }
+
+    @media (max-width: 380px) {
+      .form-embed {
+        display: none;
+      }
+
+      .form-mobile-link {
+        display: block;
+      }
     }
 
     /* Footer */
-    footer{padding:40px 0 80px; color:var(--muted); font-size:.95rem}
-    .divider{height:1px; background:color-mix(in oklab, var(--text) 12%, transparent); margin:30px 0}
+    footer {
+      padding: 40px 0 80px;
+      color: var(--muted);
+      font-size: .95rem
+    }
+
+    .divider {
+      height: 1px;
+      background: color-mix(in oklab, var(--text) 12%, transparent);
+      margin: 30px 0
+    }
 
     /* A11y helpers */
-    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0
+    }
 
     /* Motion-safe */
     @media (prefers-reduced-motion: reduce) {
-      *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap nav">
@@ -194,7 +438,8 @@
       </a>
       <nav class="nav-cta" aria-label="Primary">
         <a href="#features" class="btn secondary">How it works</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?usp=sharing&ouid=105363640128111441783" class="btn" role="button" aria-label="Get Started" target="_blank" rel="noopener">Get Started</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?usp=sharing&ouid=105363640128111441783"
+          class="btn" role="button" aria-label="Get Started" target="_blank" rel="noopener">Get Started</a>
       </nav>
     </div>
   </header>
@@ -205,7 +450,8 @@
       <div class="wrap hero-grid">
         <div>
           <h1 class="h1">Your inbox, enlightened.</h1>
-          <p class="lead">ezmail.guru brings <strong>peace of mind</strong> to your email. It proactively filters noise, flags what matters, and drafts replies—so you can achieve more with less stress.</p>
+          <p class="lead">ezmail.guru brings <strong>peace of mind</strong> to your email. It proactively filters noise,
+            flags what matters, and drafts replies—so you can achieve more with less stress.</p>
           <div class="statrow" role="list">
             <span class="chip" role="listitem">🧘 Peace of mind</span>
             <span class="chip" role="listitem">🏁 Achievement</span>
@@ -213,7 +459,8 @@
             <span class="chip" role="listitem">📬 Multi-account</span>
           </div>
           <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?usp=sharing&ouid=105363640128111441783" class="btn" role="button" aria-label="Get Started" target="_blank" rel="noopener">Get Started</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?usp=sharing&ouid=105363640128111441783"
+              class="btn" role="button" aria-label="Get Started" target="_blank" rel="noopener">Get Started</a>
             <a href="#problems" class="btn secondary">See the problem</a>
           </div>
         </div>
@@ -257,12 +504,30 @@
         <div class="kicker">Why this matters</div>
         <h2 class="section-title">The biggest email pain points</h2>
         <div class="grid-3">
-          <div class="card"><h3>Overload & Noise</h3><p class="muted">Important messages get buried under newsletters and notifications.</p></div>
-          <div class="card"><h3>What needs action?</h3><p class="muted">Hard to see what requires a decision or reply right now.</p></div>
-          <div class="card"><h3>Follow-up amnesia</h3><p class="muted">You intend to reply later—and then it slips away.</p></div>
-          <div class="card"><h3>Thread bloat</h3><p class="muted">Endless quotes, signatures, and reply-alls.</p></div>
-          <div class="card"><h3>Reply fatigue</h3><p class="muted">Thoughtful responses take time and energy.</p></div>
-          <div class="card"><h3>Multi-account chaos</h3><p class="muted">Priorities scattered across Gmail, iCloud, Yahoo, IMAP…</p></div>
+          <div class="card">
+            <h3>Overload & Noise</h3>
+            <p class="muted">Important messages get buried under newsletters and notifications.</p>
+          </div>
+          <div class="card">
+            <h3>What needs action?</h3>
+            <p class="muted">Hard to see what requires a decision or reply right now.</p>
+          </div>
+          <div class="card">
+            <h3>Follow-up amnesia</h3>
+            <p class="muted">You intend to reply later—and then it slips away.</p>
+          </div>
+          <div class="card">
+            <h3>Thread bloat</h3>
+            <p class="muted">Endless quotes, signatures, and reply-alls.</p>
+          </div>
+          <div class="card">
+            <h3>Reply fatigue</h3>
+            <p class="muted">Thoughtful responses take time and energy.</p>
+          </div>
+          <div class="card">
+            <h3>Multi-account chaos</h3>
+            <p class="muted">Priorities scattered across Gmail, iCloud, Yahoo, IMAP…</p>
+          </div>
         </div>
       </div>
     </section>
@@ -273,12 +538,31 @@
         <div class="kicker">How we fix it</div>
         <h2 class="section-title">AI that creates calm—and momentum</h2>
         <div class="grid-3">
-          <div class="card"><h3>Smart Prioritization</h3><p class="muted">See urgent items first. Everything else groups by type for quick scans.</p></div>
-          <div class="card"><h3>Auto-Triage Rules</h3><p class="muted">Plain-English rules: “Archive newsletters,” “Flag invoices blue,” “Draft for customers.”</p></div>
-          <div class="card"><h3>One-Click Drafts</h3><p class="muted">On-tone replies you approve and send. No more blank-page anxiety.</p></div>
-          <div class="card"><h3>Thread Summaries</h3><p class="muted">Concise recaps with decisions, owners, and deadlines.</p></div>
-          <div class="card"><h3>Follow-Up Safety Net</h3><p class="muted">Detects promises and nudges you before things slip.</p></div>
-          <div class="card"><h3>Unified View</h3><p class="muted">One calm dashboard for all your accounts—flags and tags aligned.</p></div>
+          <div class="card">
+            <h3>Smart Prioritization</h3>
+            <p class="muted">See urgent items first. Everything else groups by type for quick scans.</p>
+          </div>
+          <div class="card">
+            <h3>Auto-Triage Rules</h3>
+            <p class="muted">Plain-English rules: “Archive newsletters,” “Flag invoices blue,” “Draft for customers.”
+            </p>
+          </div>
+          <div class="card">
+            <h3>One-Click Drafts</h3>
+            <p class="muted">On-tone replies you approve and send. No more blank-page anxiety.</p>
+          </div>
+          <div class="card">
+            <h3>Thread Summaries</h3>
+            <p class="muted">Concise recaps with decisions, owners, and deadlines.</p>
+          </div>
+          <div class="card">
+            <h3>Follow-Up Safety Net</h3>
+            <p class="muted">Detects promises and nudges you before things slip.</p>
+          </div>
+          <div class="card">
+            <h3>Unified View</h3>
+            <p class="muted">One calm dashboard for all your accounts—flags and tags aligned.</p>
+          </div>
         </div>
 
         <div class="divider"></div>
@@ -310,9 +594,18 @@
         <div class="kicker">Under the hood</div>
         <h2 class="section-title">Three steps to inbox zen</h2>
         <div class="grid-3">
-          <div class="card"><h3>1) Connect accounts</h3><p class="muted">Secure OAuth or IMAP with app passwords. We sync metadata and recent mail.</p></div>
-          <div class="card"><h3>2) Set your intent</h3><p class="muted">Teach the guru what “important” means to you. Add rules in plain English.</p></div>
-          <div class="card"><h3>3) Review & approve</h3><p class="muted">Speed-run triage. Approve drafts, schedule sends, auto-archive the rest.</p></div>
+          <div class="card">
+            <h3>1) Connect accounts</h3>
+            <p class="muted">Secure OAuth or IMAP with app passwords. We sync metadata and recent mail.</p>
+          </div>
+          <div class="card">
+            <h3>2) Set your intent</h3>
+            <p class="muted">Teach the guru what “important” means to you. Add rules in plain English.</p>
+          </div>
+          <div class="card">
+            <h3>3) Review & approve</h3>
+            <p class="muted">Speed-run triage. Approve drafts, schedule sends, auto-archive the rest.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -323,9 +616,18 @@
         <div class="kicker">Early feedback</div>
         <h2 id="testimonials" class="section-title">“I felt calmer on day one.”</h2>
         <div class="grid-3">
-          <div class="card"><p>“Priorities surfaced instantly. I stopped doom-scrolling my inbox.”</p><p class="muted">— Product Manager</p></div>
-          <div class="card"><p>“Newsletters vanish, summaries hit the key points. Bliss.”</p><p class="muted">— Agency Owner</p></div>
-          <div class="card"><p>“Drafts sounded like me. I just tweak and send.”</p><p class="muted">— Founder</p></div>
+          <div class="card">
+            <p>“Priorities surfaced instantly. I stopped doom-scrolling my inbox.”</p>
+            <p class="muted">— Product Manager</p>
+          </div>
+          <div class="card">
+            <p>“Newsletters vanish, summaries hit the key points. Bliss.”</p>
+            <p class="muted">— Agency Owner</p>
+          </div>
+          <div class="card">
+            <p>“Drafts sounded like me. I just tweak and send.”</p>
+            <p class="muted">— Founder</p>
+          </div>
         </div>
       </div>
     </section>
@@ -336,22 +638,20 @@
         <div class="card form-card">
           <div style="padding:18px 18px 0">
             <h2 id="waitlist-title" class="section-title">Get early access</h2>
-            <p class="muted">Join the waitlist and tell us what hurts most. We'll prioritize folks drowning in multi-account chaos.</p>
+            <p class="muted">Join the waitlist and tell us what hurts most. We'll prioritize folks drowning in
+              multi-account chaos.</p>
             <ul class="list" style="margin-top:10px">
               <li><span class="dot"></span><span>No spam—ever. Unsubscribe anytime.</span></li>
               <li><span class="dot"></span><span>Mac + iOS friendly; Windows support coming.</span></li>
               <li><span class="dot"></span><span>Be the first to try proactive follow-ups.</span></li>
             </ul>
-            <div style="margin:14px 0 8px"><a href="#features" class="btn secondary" style="width:100%">See features</a></div>
+            <div style="margin:14px 0 8px"><a href="#features" class="btn secondary" style="width:100%">See features</a>
+            </div>
 
             <!-- Mobile fallback button (hidden on wider screens) -->
-            <a
-              class="btn"
+            <a class="btn"
               href="https://docs.google.com/forms/d/e/1FAIpQLSePsJaD9J-UonvEwIjo7LY3YXcmYzmMfTSa0G7NGROi21NA7A/viewform?usp=sharing&ouid=105363640128111441783"
-              target="_blank"
-              rel="noopener"
-              style="width:100%; margin: 8px 0 8px"
-            >
+              target="_blank" rel="noopener" style="width:100%; margin: 8px 0 8px">
               Get Started
             </a>
           </div>
@@ -369,7 +669,8 @@
           <p class="muted">Email, without the anxiety.</p>
         </div>
         <div>
-          <p class="muted">Privacy-first: we process only what's needed to triage. Drafts never send without your say-so.</p>
+          <p class="muted">Privacy-first: we process only what's needed to triage. Drafts never send without your
+            say-so.</p>
         </div>
       </div>
       <p style="margin-top:14px" class="muted">© <span id="y"></span> ezmail.guru</p>
@@ -378,17 +679,18 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
         const id = a.getAttribute('href').slice(1);
         const el = document.getElementById(id);
-        if(el){
+        if (el) {
           e.preventDefault();
-          el.scrollIntoView({behavior:'smooth', block:'start'});
-          history.pushState(null, "", '#'+id);
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, "", '#' + id);
         }
       });
     });
   </script>
 </body>
+
 </html>
